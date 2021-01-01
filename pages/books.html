@@ -1,4 +1,3 @@
-<link href="//cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css" rel="stylesheet" />
 <h3>Just a page for me to keep track of the audiobooks I've listened to.&nbsp; Beware spoilers.</h3>
 
 <p>&nbsp;</p>
@@ -776,6 +775,13 @@
 
 <p>Descriptions for the Top 100 are shamelessly stolen from said Top 100 page. [Comments in brackets are my own]</p>
 
-<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-<script src="//cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
-<script src="/js/books.js"></script>
+<script>
+	$('#Books').DataTable({
+		"columnDefs": [
+			{ "type": "num", "targets": 0 },
+			{ "type": "num", "targets": 1 },
+		],
+		"lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
+		"order": []
+	});
+</script>
