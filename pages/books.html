@@ -779,12 +779,14 @@
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
 <script>
-	$('#Books').DataTable({
-		"columnDefs": [
-			{ "type": "num", "targets": 0 },
-			{ "type": "num", "targets": 1 },
-		],
-		"lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
-		"order": []
+	$(document).ready(function() {
+		$('#Books').DataTable({
+			"columnDefs": [
+				{ "type": "num", "targets": 0 },
+				{ "type": "num", "targets": 1 },
+			],
+			"lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
+			"order": []
+		});
 	});
 </script>
