@@ -778,17 +778,4 @@
 
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/1.10.22/js/dataTables.bootstrap.min.js"></script>
-<script>
-	var onLoad = function() {
-		$('#Books').DataTable({
-			"columnDefs": [
-				{ "type": "num", "targets": 0 },
-				{ "type": "num", "targets": 1 },
-			],
-			"lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
-			"order": []
-		});
-	};
-	
-	setTimeout(onLoad, 100);
-</script>
+<script src="/js/books.js"></script>
