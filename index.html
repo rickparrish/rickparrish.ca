@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="/favicon.ico">
+	<title>Random Ramblings - Rick's Home on the Web</title>
+
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/united/bootstrap.min.css" rel="stylesheet" class="SelectedTheme">
+
+	<link href="/css/Bootstrap3.css?v=20180924" rel="stylesheet">
+
+	<!--[if lt IE 9]>
+	  <script src="/js/html5shiv.js"></script>
+	  <script src="/js/respond.min.js"></script>
+	<![endif]-->
+
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="/js/jquery.cookie.js"></script>
+	<script src="/js/jquery.tablesorter.min.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+	<meta name="keywords" content="getsimple, easy, content management system" />
+	<link rel="canonical" href="https://www.rickparrish.ca/" />
+</head>
+<body id="index">
+	<div class="container">
+		<h1 class="hidden-xs"><a href="#/" style="color: black;">Rick's Home on the Web</a></h1>
+		<div class="navbar navbar-default xnavbar-fixed-top" id="NavBar">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand visible-xs" href="#/">Rick's Home on the Web</a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li><a href="#/" title="Random Ramblings">Home</a></li>
+					<li><a href="#/books" title="Books">Books</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div id="hashigo">Loading...</div>
+		
+		<hr>
+		<div id="bootstrapCssTest" class="hide"></div>
+		<footer>
+			<p>Copyright &copy <a href="https://www.rickparrish.ca" target="_blank">Rick Parrish</a> / <a href="https://www.randm.ca" target="_blank">R&amp;M Software</a></p>
+		</footer>
+	</div> 
+	
+	<script src="/js/hashigo.js"></script>
+	<script>
+		var h = new hashigo();
+		h.start();
+	</script>	
+	<script>
+	  if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+		var msViewportStyle = document.createElement("style")
+		msViewportStyle.appendChild(
+		  document.createTextNode(
+			"@-ms-viewport{width:auto!important}"
+		  )
+		)
+		document.getElementsByTagName("head")[0].appendChild(msViewportStyle)
+	  }
+	</script>
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-4602017-3', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+</body>
+</html>
