@@ -1,0 +1,222 @@
+<style type="text/css">
+    #output td, #output th {
+        text-align: center;
+    }
+</style>
+
+<h2>Plate Calculator</h2>
+
+<p class="lead">Easily determine which plates to use for a given target weight</p>
+
+<label for="barWeight" class="">Bar weight</label>
+<input type="text" name="barWeight" id="barWeight" class="form-control" placeholder="Enter the weight of your bar" value="18" />
+
+<br />
+
+<label for="plates">Plates - Enter as WEIGHTxCOUNT from largest to smallest, for example <strong>25x4 10x2</strong> if you have four 25lb plates and two 10lb plates</label>
+<input type="text" name="plates" id="plates" class="form-control" placeholder="Enter the weight and count of your plates" value="25x6 10x4 5x4 2.5x4 1.25x4 0.5x8" />
+
+<br />
+
+<label for="targetWeight">Target weight</label>
+<input type="text" name="targetWeight" id="targetWeight" class="form-control" placeholder="Enter the amount of weight you want to lift" />
+
+<br />
+
+<button id="calculate" class="btn btn-primary">Calculate</button>
+
+<div id="output-wrapper" style="display: none;">
+    <hr />
+
+    <table class="table table-active table-bordered table-hover table-striped" id="output">
+        <thead>
+            <tr>
+                <th>Side Weight</th>
+                <th>Total Weight</th>
+                <th>+ / -</th>
+                <th>Plates</th>
+                <th>Plate Count</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+    <div class="small">
+        Notes regarding this calculator:
+        <ul>
+            <li>If an exact match of your target weight is possible, the combination with the fewest number of plates is shown</li>
+            <li>If an exact match is <u>not</u> possible, up to two combinations that are closest to the target weight are shown</li>
+            <li>Up to <u>ten</u> plates per side will be used, which depending on the size of your plates and sleeves, may or may not fit your bar</li>
+			<li>Plates are loaded symmetrically, so for example a 5lb plate on one side won't be paired with two 2.5lb plates on the other side</li>
+        </ul>
+    </div>
+</div>
+
+
+
+<script>
+    var combinations = {};
+
+    // From: https://stackoverflow.com/a/16256122/342378
+    function getCombinations(plates, maxLength, startPosition, work)
+    {
+        if (maxLength == 0)
+        {
+            var sum = work.reduce((a, b) => a + b, 0);
+            if (!combinations[sum])
+            {
+                combinations[sum] = [...work];
+            }
+        }
+        else
+        {
+            for (var i = startPosition; i <= plates.length - maxLength; i++)
+            {
+                work[work.length - maxLength] = plates[i];
+                getCombinations(plates, maxLength - 1, i + 1, work);
+            }
+        }
+    }
+    
+	// Load existing inputs from localStorage
+    function loadData() {
+        try {
+            var barWeight = localStorage.getItem('barWeight');
+            if (barWeight) {
+                $('#barWeight').val(barWeight);
+            }
+
+            var plates = localStorage.getItem('plates');
+            if (plates) {
+                $('#plates').val(plates);
+            }
+
+            var targetWeight = localStorage.getItem('targetWeight');
+            if (targetWeight) {
+                $('#targetWeight').val(targetWeight);
+            }
+        } catch (e) {
+            console.log(e);
+            // Ignore, just can't reload the form
+        }
+    }
+    
+    // Parse the bar weight textbox
+    function parseBarWeight() {
+        return parseFloat($('#barWeight').val());
+    }
+    
+    // Parse the plates textbox to get a list of plates, with half of each size removed (because we want to balance them later)
+    function parsePlates() {
+        var result = [];
+        
+        var plates = $('#plates').val().split(' ');
+        for (var i = 0; i < plates.length; i++) {
+            var weightCount = plates[i].split('x');
+            for (var j = 0; j < Math.floor(weightCount[1] / 2); j++) {
+                result.push(parseFloat(weightCount[0]));
+            }
+        }
+        
+        return result;
+    }
+    
+	// Parse the target weight textbox
+    function parseTargetWeight() {
+        return parseFloat($('#targetWeight').val());
+    }
+    
+    function saveData() {
+        try {
+            localStorage.setItem('barWeight', $('#barWeight').val());
+            localStorage.setItem('plates', $('#plates').val());
+            localStorage.setItem('targetWeight', $('#targetWeight').val());
+        } catch (e) {
+            console.log(e);
+            // Ignore, just can't reload the form
+        }
+    }
+    
+    // Handle click on Calculate button
+    $('#calculate').click(function() {
+        var maxPlates = 10;
+       
+        var barWeight = parseBarWeight();
+        var plates = parsePlates();
+        var targetWeight = parseTargetWeight();
+        var targetSideWeight = (targetWeight - barWeight) / 2.0;
+        
+        // Get the plate combinations
+        combinations = {};
+        for (var i = 1; i <= Math.min(maxPlates, plates.length); i++)
+        {
+            getCombinations(plates, i, 0, new Array(i));
+        }
+        var keys = Object.keys(combinations).sort(function(a, b){return a - b});
+
+        // Reset the table
+        var tbody = $('#output tbody');
+        tbody.html('');
+
+        // Find the keys that are closest to or equal to the target weight
+        var keyBefore = -1;
+        var keyAfter = -1;
+        var keyExact = -1;
+        for (var i = 0; i < keys.length; i++) {
+            if (keys[i] < targetSideWeight) {
+                keyBefore = keys[i];
+            } else if (keys[i] > targetSideWeight) {
+                keyAfter = keys[i];
+                break;
+            } else if (keys[i] == targetSideWeight) {
+                keyExact = keys[i];
+                break;
+            }
+        }
+
+        // Build a new list of keys that we want to loop through
+        var keys = [];
+        if (keyExact >= 0) {
+            keys.push(keyExact);
+        } else {
+            if (keyBefore >= 0) {
+                keys.push(keyBefore);
+            }
+            if (keyAfter >= 0) {
+                keys.push(keyAfter);
+            }
+        }
+
+        // Output the plate combination(s)
+        for (var i = 0; i < keys.length; i++) {
+            // Calculate some values
+            var combination = combinations[keys[i]];
+            var sideWeight = combination.reduce((a, b) => a + b, 0);
+            var totalWeight = (sideWeight * 2.0) + barWeight;
+
+            // Add the row
+            var difference = (totalWeight - targetWeight);
+            var row = $('<tr />');
+            row.append('<td>' + sideWeight + '</td>');
+            row.append('<td>' + totalWeight + '</td>');
+            if (difference == 0.0) {
+                row.append('<td class="text-success">Exact</td>');
+            } else if (difference > 0.0) {
+                row.append('<td class="text-danger">' + Math.abs(difference) + ' over</td>');
+            } else if (difference < 0.0) {
+                row.append('<td class="text-danger">' + Math.abs(difference) + ' under</td>');
+            }
+            row.append('<td>' + combination.join(' + ') + '</td>');
+            row.append('<td>' + combination.length + '</td>');
+            tbody.append(row);
+        }
+        $('#output-wrapper').show('slow');
+
+        // Save data for subsequent visits
+        saveData();
+    });
+    
+    // Load data used on a previous visit
+    loadData();
+</script>
