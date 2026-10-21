@@ -1,0 +1,59 @@
+---
+layout: default
+title: News
+---
+
+<h2>News</h2>
+
+{% for post in paginator.posts %}
+<div class="panel panel-default">
+    <div class="panel-heading"><h3 class="panel-title">{{ post.title }}</h3></div>
+    <div class="panel-body">
+        <p><em>Published on {{ post.date | date: "%B %e, %Y" }}</em><p>
+        <p>
+            {{ post.content }}
+        </p>
+    </div>
+</div>
+{% endfor %}
+
+{% if paginator.total_pages > 1 %}
+    <div>
+        <ul class="pagination">
+            <!--Previous-->
+            {% if paginator.previous_page == nil %}
+                <li class="page-item disabled">
+                    <span class="page-link">&laquo;</span>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ paginator.previous_page_path }}">&laquo;</a>
+                </li>
+            {% endif %}
+
+            <!--Individual pages-->
+            {% for page in (1..paginator.total_pages) %}
+                {% if page == paginator.page %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ page }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="{% if page == 1 %}{{ site.paginate_root | relative_url }}{% else %}{{ site.paginate_path | relative_url | replace: ':num', page }}{% endif %}">{{ page }}</a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+
+            <!--Next-->
+            {% if paginator.next_page == nil %}
+                <li class="page-item disabled">
+                    <span class="page-link">&raquo;</span>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ paginator.next_page_path }}">&raquo;</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+{% endif %}

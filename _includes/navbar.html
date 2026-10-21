@@ -1,0 +1,48 @@
+<div class="container">
+    <br />
+    <div class="navbar navbar-default" id="NavBar">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">{{ site.title }}</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li {% if page.url == "/index/" %}class="active"{% endif %}><a href="/index/">Home</a></li>
+<li {% if page.url == "/books/" %}class="active"{% endif %}><a href="/books/">Books</a></li>
+<li {% if page.url == "/contact/" %}class="active"{% endif %}><a href="/contact/">Contact</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Other Themes <b class="caret"></b></a>
+                    <ul class="dropdown-menu" id="ThemesMenu">
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Default.min.css" data-themename="Default">Default</a></li>
+                        <li class="divider"></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Cerulean.min.css" data-themename="Cerulean">Cerulean</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Cosmo.min.css" data-themename="Cosmo">Cosmo</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Cyborg.min.css" data-themename="Cyborg">Cyborg</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Darkly.min.css" data-themename="Darkly">Darkly</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Flatly.min.css" data-themename="Flatly">Flatly</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Journal.min.css" data-themename="Journal">Journal</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Lumen.min.css" data-themename="Lumen">Lumen</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Paper.min.css" data-themename="Paper">Paper</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Readable.min.css" data-themename="Readable">Readable</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Sandstone.min.css" data-themename="Sandstone">Sandstone</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Simplex.min.css" data-themename="Simplex">Simplex</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Slate.min.css" data-themename="Slate">Slate</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Spacelab.min.css" data-themename="Spacelab">Spacelab</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Superhero.min.css" data-themename="Superhero">Superhero</a></li>
+                        <li class="current active"><a href="#" rel="/assets/css/bootstrap_United.min.css" data-themename="United">United</a></li>
+                        <li class=""><a href="#" rel="/assets/css/bootstrap_Yeti.min.css" data-themename="Yeti">Yeti</a></li>
+                        <li class="divider"></li>
+                        <li><a><input type="checkbox" id="chkInvertNavigationBar" /> <label for="chkInvertNavigationBar">Invert NavBar</label></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

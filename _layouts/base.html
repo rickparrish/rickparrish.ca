@@ -1,0 +1,37 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ site.title }}</title>
+
+    <link rel="shortcut icon" href="/assets/favicon.ico">
+    <link href="/assets/css/bootstrap_United.min.css" rel="stylesheet" class="SelectedTheme">
+    <link href="/assets/css/site.css" rel="stylesheet">
+
+    <!--[if lt IE 9]>
+        <script src="/assets/js/html5shiv.js"></script>
+        <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+
+
+    <script src="/assets/js/jquery-1.12.4.min.js"></script>
+    <script src="/assets/js/jquery.cookie.js"></script>
+    <script src="/assets/js/jquery.tablesorter.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+</head>
+<body id="index">
+    {% include navbar.html %}
+
+    {{ content }}
+
+    {% include footer.html %}
+
+    {%- if jekyll.environment == 'production' and site.google_analytics_id -%}
+    {%- include google-analytics.html -%}
+    {%- endif -%}
+</body>
+</html>

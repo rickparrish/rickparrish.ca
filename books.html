@@ -1,3 +1,9 @@
+---
+layout: default
+permalink: /books/
+title: Books
+---
+<link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" />
 <h3>Just a page for me to keep track of the audiobooks I've listened to.&nbsp; Beware spoilers.</h3>
 
 <p>&nbsp;</p>
@@ -7,10 +13,12 @@
 		<tr>
 			<th>
 				<p>Top 100*</p>
+
 				<p>2011</p>
 			</th>
 			<th>
 				<p>Top 100*</p>
+
 				<p>2019</p>
 			</th>
 			<th>Book</th>
@@ -143,7 +151,7 @@
 			<td>
 				<p>A crew sets out to explore the huge 'Ringworld' artificial object. The foursome survive encounters with the local inhabitants ("nothing but savagery"), who are seemingly very human. The apex of the Tales of Known Space sequence, Niven's hard sci-fi may be far too technical and a bit short on entertainment value for some tastes.</p>
 
-				<p>[I was glad that Teela turned out to be more than just a "friends with benefits" for Louis, but the idea that luck is a genetic trait that can be selectively bred is ridiculous.&nbsp; I might give the sequels a try, because the story was interesting aside from that detail]</p>
+				<p>[I was glad that Teela turned out to be more than just a "companion" for Louis, but the idea that luck is a genetic trait that can be selectively bred is ridiculous.&nbsp; I might give the sequels a try, because the story was interesting aside from that detail]</p>
 			</td>
 		</tr>
 		<tr>
@@ -159,11 +167,11 @@
 			<td style="text-align: center;">15</td>
 			<td>Hyperion</td>
 			<td>Dan Simmons</td>
-			<td style="text-align: center;">No</td>
+			<td style="text-align: center;">Maybe</td>
 			<td>
 				<p>Canterbury Tales in space. Human ascendancy in the galaxy is under siege as seven pilgrims set off for the Time Tombs to find the creature called Shrike. Along the way they trade their stories - each one harbouring a dark secret. Well constructed high-tech future that adroitly mixes religion and revelation into the plot. At the top of the class.</p>
 
-				<p>[A few of the tales were quite interesting, but overall I just wanted to be done with it.&nbsp; If I had known they wouldn't even meet the Shrike, I probably would have given up part way through]</p>
+				<p>[A few of the tales were quite interesting, but overall I just wanted to be done with it.&nbsp; If I had known they wouldn't even meet the Shrike, I probably would have given up part way through -- EDIT: I just learned that Hyperion ended as it did because it and its sequel were written as one book, but then split by the publisher.&nbsp; So maybe I'll have to give it another shot by reading the sequal right after]</p>
 			</td>
 		</tr>
 		<tr>
@@ -445,7 +453,7 @@
 			<td>
 				<p>This is Stephenson's most complex yarn yet, although many would argue it's not sci-fi. The ultra-hip tale switches between the story of a top secret WWII code-cracking unit and its connection to present day decrypters. The underlying theme is that the universe is a cosmic operating system that uses a command-line interface. Popular with Stephenson's fans.</p>
 
-				<p>[Not ranked in the 2019 column because it was removed for not being sci-fi]</p>
+				<p>[Was removed from the top 100 list for not being sci-fi]</p>
 			</td>
 		</tr>
 		<tr>
@@ -602,7 +610,7 @@
 		</tr>
 		<tr>
 			<td style="text-align: center;">79</td>
-			<td style="text-align: center;">&nbsp;</td>
+			<td style="text-align: center;">-</td>
 			<td>Puppet Masters, The</td>
 			<td>Robert A Heinlein</td>
 			<td style="text-align: center;">Yes</td>
@@ -693,7 +701,7 @@
 			<td>
 				<p>In the first book of this brilliant series, Stephen King introduces readers to one of his most enigmatic heroes, Roland of Gilead, The Last Gunslinger. He is a haunting figure, a loner on a spellbinding journey into good and evil. In his desolate world, which frighteningly mirrors our own, Roland pursues The Man in Black, encounters an alluring woman named Alice, and begins a friendship with the Kid from Earth called Jake. Both grippingly realistic and eerily dreamlike, The Gunslinger leaves readers eagerly awaiting the next chapter.</p>
 
-				<p>[It's an amazing series, but it's a No to reading again for a few (spoiler filled) reasons.&nbsp; 1) Because holy crap it's long.&nbsp; 2) Because screw the fact that poor Roland is on repeat.&nbsp; 3) Because screw Patrick Danville and his magical eraser even harder.&nbsp; 4) And finally, because King narrated The Wind Through the Keyhole, and it is unbearable to hear him pronounce "Deschain"]</p>
+				<p>[It's an amazing series, but it's a No to reading again for a few (spoiler filled) reasons.&nbsp; 1) Because man it's long!&nbsp; 2) Because screw the fact that poor Roland is on repeat.&nbsp; 3) Because screw Patrick Danville and his magical eraser even harder.&nbsp; 4) And finally, because King narrated The Wind Through the Keyhole, and it is unbearable to hear him pronounce "Deschain"]</p>
 			</td>
 		</tr>
 		<tr class="warning">
@@ -774,14 +782,13 @@
 </ul>
 
 <p>Descriptions for the Top 100 are shamelessly stolen from said Top 100 page. [Comments in brackets are my own]</p>
-
-<script>
-	$('#Books').DataTable({
-		"columnDefs": [
-			{ "type": "num", "targets": 0 },
-			{ "type": "num", "targets": 1 },
-		],
-		"lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
-		"order": []
-	});
+<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script><script>
+$('#Books').DataTable({
+"columnDefs": [
+    { "type": "num", "targets": 0 },
+    { "type": "num", "targets": 1 },
+  ],
+    "lengthMenu": [[-1, 10, 25, 50], ["All", 10, 25, 50]],
+    "order": []
+});
 </script>
